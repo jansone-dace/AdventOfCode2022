@@ -3,6 +3,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Advent of Code 2022");
+        Console.WriteLine(String.Format("Day 1, part 1: {0}", Day1.Part1()));
+        Day1.Part1();
     }
 }
