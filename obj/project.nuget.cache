@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hXj6P14JsXqDTgyRfZA/nrK4xSlRiiSbzc4W7HCofCdb2MmthkEx8CF1sEjIBk80b8+eVZdY0I78+Z5kLmIzew==",
+  "dgSpecHash": "bgU3qOW+OymephBsVgd/YUoigyoBqs9PFGxDRUM7lISAubwtpNKB0a/b2qLKvYrsJ/RVLXzv6el5qXTc1nxgMQ==",
   "success": true,
-  "projectFilePath": "/Users/dace/Documents/programming/Advent of Code 2022/Advent of Code 2022.csproj",
+  "projectFilePath": "C:\\Users\\janso\\Documents\\AoC2022\\AdventOfCode2022\\Advent of Code 2022.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
