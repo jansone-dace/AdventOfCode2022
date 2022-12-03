@@ -33,6 +33,53 @@ namespace Advent_of_Code_2022.Solutions
             return totalValue;
         }
 
+        public static int Part2()
+        {
+            string line1 = "", line2 = "", line3 = "";
+            List<char> commonLetters = new List<char>();
+            int totalValue = 0;
+            char commonElement = ' ';
+
+            foreach (string line in System.IO.File.ReadLines(@"Inputs/day3.txt"))
+            {
+                if (string.IsNullOrEmpty(line1))
+                    line1 = line;
+                else if (string.IsNullOrEmpty(line2))
+                    line2 = line;
+                else
+                {
+                    line3 = line;
+
+                    foreach (var letter1 in line1)
+                    {
+                        foreach (var letter2 in line2)
+                        {
+                            if (letter1 == letter2)
+                                commonLetters.Add(letter1);
+                        }
+                    }
+                    
+                    foreach (var letter1 in commonLetters)
+                    {
+                        foreach (var letter2 in line3)
+                        {
+                            if (letter1 == letter2)
+                            {
+                                commonElement = letter1;
+                                break;
+                            }
+                        }
+                    }
+
+                    totalValue += GetItemValue(commonElement);
+                    line1 = line2 = line3 = "";
+                    commonLetters.Clear();
+                }
+            }
+
+            return totalValue;
+        }
+
         private static int GetItemValue(char letter)
         {
             if (Char.IsLower(letter))
