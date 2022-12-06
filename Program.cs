@@ -15,5 +15,6 @@ class Program
         Console.WriteLine(String.Format("Day 4, part 2: {0}", Day4.Part2()));
         Console.WriteLine(String.Format("Day 5, part 1: {0}", Day5.Part1()));
         Console.WriteLine(String.Format("Day 5, part 2: {0}", Day5.Part2()));
+        Console.WriteLine(String.Format("Day 6, part 1: {0}", Day6.Part1()));
     }
 }
