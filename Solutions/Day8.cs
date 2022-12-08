@@ -103,5 +103,86 @@ namespace Advent_of_Code_2022.Solutions
 
             return visibleTreeCount;
         }
+
+        /// <summary>
+        /// Returns highest scenic score for a tree
+        /// </summary>
+        /// <returns></returns>
+        public static int Part2()
+        {
+            List<List<int>> input = new List<List<int>>();
+            int counter = 0;
+            int value, visibleTreeCount, scenicScore, maxScenicScore = 0;
+
+            foreach (string line in System.IO.File.ReadLines(@"Inputs/day8.txt"))
+            {  
+                input.Add(new List<int>());
+                foreach (var character in line)
+                {
+                    value = Int32.Parse(character.ToString());
+                    input[counter].Add(value);
+                }
+                counter++;
+            }
+
+            for (int row = 1; row < input.Count-1; row++)
+            {
+                for (int column = 1; column < input[row].Count-1; column++)
+                {
+                    // Left
+                    visibleTreeCount = 0;
+                    for (int i = column-1; i >= 0; i--)
+                    {
+                        visibleTreeCount++;
+                        if (input[row][i] >= input[row][column])
+                        {
+                            break;
+                        }
+                    }
+                    scenicScore = visibleTreeCount;
+
+                    // Right
+                    visibleTreeCount = 0;
+                    for (int i = column+1; i < input[row].Count;i++)
+                    {
+                        visibleTreeCount++;
+                        if (input[row][i] >= input[row][column])
+                        {
+                            break;
+                        }
+                    }
+                    scenicScore *= visibleTreeCount;
+
+                    // Up
+                    visibleTreeCount = 0;
+                    for (int i = row-1; i >= 0; i--)
+                    {
+                        visibleTreeCount++;
+                        if (input[i][column] >= input[row][column])
+                        {
+                            break;
+                        }
+                    }
+                    scenicScore *= visibleTreeCount;
+
+                    // Down
+                    visibleTreeCount = 0;
+                    for (int i = row+1; i < input[row].Count; i++)
+                    {
+                        visibleTreeCount++;
+                        if (input[i][column] >= input[row][column])
+                        {
+                            break;
+                        }
+                    }
+                    scenicScore *= visibleTreeCount;
+
+                    if (scenicScore > maxScenicScore)
+                        maxScenicScore = scenicScore;
+                }
+            }
+
+            return maxScenicScore;
+        }
     }
 }
