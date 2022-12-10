@@ -1,0 +1,41 @@
+namespace Advent_of_Code_2022.Solutions
+{
+    public class Day10
+    {
+        /// <summary>
+        /// Returns sum of signals strengths during the 20th, 60th, 100th, 140th, 180th, and 220th cycles
+        /// </summary>
+        /// <returns></returns>
+        public static int Part1()
+        {
+            int x = 1, currentCycle = 0, addx, signalSum = 0;
+
+            foreach (string line in System.IO.File.ReadLines(@"Inputs/day10.txt"))
+            {  
+                addx = 0;
+                if (line == "noop")
+                {
+                    currentCycle++;
+                    signalSum += checkSignalStrength(currentCycle, x);
+                    continue;
+                }
+
+                addx = Int32.Parse(line.Split("addx ")[1]);
+                currentCycle++;
+                signalSum += checkSignalStrength(currentCycle, x);
+                currentCycle++;
+                signalSum += checkSignalStrength(currentCycle, x);
+                x += addx;
+            }
+
+            return signalSum;
+        }
+
+        private static int checkSignalStrength(int currentCycle, int x)
+        {
+            if (new[] {20,60,100,140,180,220}.Contains(currentCycle))
+                return currentCycle * x;
+            return 0;
+        }
+    }
+}
